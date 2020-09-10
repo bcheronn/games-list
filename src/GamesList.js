@@ -1,8 +1,9 @@
 import React from "react";
+import gameslist from "games-list.json";
 
 class GamesList extends React.Component {
   render() {
-    return <h1>Bonjour, monde !</h1>;
+    return <h1>Online Games</h1>;
   }
 }
 
