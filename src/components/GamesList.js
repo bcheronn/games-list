@@ -1,11 +1,12 @@
 import React from "react";
-import gamesListData from "./games-list.json";
+import gamesListData from "../data/games-list.json";
+import Games from "./Games";
 
 class GamesList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      gamesList: gamesListData.slice(),
+      gamesList: gamesListData,
     };
   }
 
@@ -14,7 +15,7 @@ class GamesList extends React.Component {
       <div className="gameslist">
         <h1>Games</h1>
         <div className="buttons">{/* <Buttons /> */}</div>
-        <div className="games">{/* <Games /> */}</div>
+        <div className="games"><Games gamesList={this.state.gamesList}/></div>
       </div>
     );
   }

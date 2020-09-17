@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import GamesList from './GamesList';
+import GamesList from './components/GamesList';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
