@@ -1,31 +1,33 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-class Games extends React.Component {
-  render() {
-    // const gamesListSize = this.props.gamesList.length;
-    const gamesList = this.props.gamesList;
-    const gamesCards = gamesList.map((game, index) => {
-      return (
-        <div key={index} className="game">
-          <a href={`/game/${game.ID}`}>
-            <img src="https://picsum.photos/200/300" alt="" />
-          </a>
-          <h2>{game.Name}</h2>
-          <p>
-            Platform : {game.Platform}
-            <br />
-            Year : {game.Year}
-            <br />
-            Genre : {game.Genre}
-            <br />
-            Publisher : {game.Publisher}
-          </p>
-        </div>
-      );
-    });
+const Games = (props) => {
+  const gamesList = props.gamesList;
+  const gamesCards = gamesList.map((game, index) => {
+    const gameURL = "/game/".concat(game.id);
 
-    return <div>{gamesCards}</div>;
-  }
-}
+    return (
+      <div key={index}>
+        <img src={game.image_url} alt=""></img>
+        <Link to={gameURL}>
+          <h5>{game.name}</h5>
+        </Link>
+        Publisher: {game.publisher}
+        <br />
+        Published: {game.year_published}
+        <br />
+        Genre: {game.genre}
+        <br />
+        Description: {game.description}
+        {/* "id"
+            "image_url"
+            "platforms"
+            "comments" */}
+      </div>
+    );
+  });
+
+  return <>{gamesCards}</>;
+};
 
 export default Games;

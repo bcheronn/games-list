@@ -4,7 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import GamesList from "./GamesList";
 
 const App = () => (
-  <div>
+  <>
     <Switch>
       <Route path="/game/:id">
         <Game />
@@ -13,7 +13,7 @@ const App = () => (
         <GamesList />
       </Route>
     </Switch>
-  </div>
+  </>
 );
 
 export default App;
