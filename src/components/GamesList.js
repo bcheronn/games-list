@@ -14,9 +14,13 @@ class GamesList extends React.Component {
 
   componentDidMount() {
     axios.get("https://localhost:8000/games").then((res) => {
-      console.log("res", res);
+      console.clear();
+      console.log("Res", res);
       const gamesList = res.data;
-      this.setState({ gamesList });
+      this.setState({ gamesList }).catch((res) => {
+        console.clear();
+        console.log(res);
+      });
     });
   }
 
