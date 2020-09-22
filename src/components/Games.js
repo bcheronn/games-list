@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 const Games = (props) => {
   const gamesList = props.gamesList;
   const gamesCards = gamesList.map((game, index) => {
-    // const gameURL = "/game/".concat(game.id);
-
     return (
       <div key={index}>
         <img src={game.image_url} alt=""></img>
@@ -18,11 +16,12 @@ const Games = (props) => {
         <br />
         Genre: {game.genre}
         <br />
+        Platforms:{" "}
+        {game.platforms.map((platform, index) => (
+          <span key={index}>{platform.name}</span>
+        ))}
+        <br />
         Description: {game.description}
-        {/* "id"
-            "image_url"
-            "platforms"
-            "comments" */}
       </div>
     );
   });

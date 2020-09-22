@@ -22,7 +22,6 @@ class GamesList extends React.Component {
         this.setState({ gamesList });
       })
       .catch((res) => {
-        console.clear();
         console.log(res);
       });
   }
