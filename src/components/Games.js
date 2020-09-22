@@ -17,9 +17,11 @@ const Games = (props) => {
         Genre: {game.genre}
         <br />
         Platforms:{" "}
-        {game.platforms.map((platform, index) => (
-          <span key={index}>{platform.name}</span>
-        ))}
+        <ul>
+          {game.platforms.map((platform, index) => (
+            <li key={index}>{platform.name}</li>
+          ))}
+        </ul>
         <br />
         Description: {game.description}
       </div>
