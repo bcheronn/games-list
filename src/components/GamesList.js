@@ -1,7 +1,7 @@
 import React from "react";
 // import gamesListData from "../data/games-list.json";
 import Games from "./Games";
-import axios from "axios";
+import Axios from "axios";
 
 class GamesList extends React.Component {
   constructor(props) {
@@ -13,8 +13,7 @@ class GamesList extends React.Component {
   }
 
   componentDidMount() {
-    axios
-      .get("https://localhost:8000/games")
+    Axios.get("https://localhost:8000/games")
       .then((res) => {
         console.clear();
         console.log("Res", res);
