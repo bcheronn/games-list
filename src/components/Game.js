@@ -1,5 +1,9 @@
 import React from "react";
 
-export default function Game() {
-  return <h2>Game</h2>;
+class Game extends React.Component {
+  render() {
+    return <h2>Game: {this.props.match.params.id}</h2>;
+  }
 }
+
+export default Game;
