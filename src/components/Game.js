@@ -5,9 +5,10 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      game: [],
-      platforms: [],
-      comments: [],
+      game: {
+        platforms: [],
+        comments: [],
+      },
     };
   }
 
@@ -17,9 +18,7 @@ class Game extends React.Component {
         console.clear();
         console.log("Res", res);
         const game = res.data;
-        const platforms = res.data.platforms;
-        const comments = res.data.comments;
-        this.setState({ game, platforms, comments });
+        this.setState({ game });
       })
       .catch((res) => {
         console.log(res);
@@ -28,8 +27,6 @@ class Game extends React.Component {
 
   render() {
     const game = this.state.game;
-    const platforms = this.state.platforms;
-    const comments = this.state.comments;
 
     return (
       <div>
@@ -44,7 +41,7 @@ class Game extends React.Component {
         <br />
         Platforms:{" "}
         <ul>
-          {platforms.map((platform, index) => (
+          {game.platforms.map((platform, index) => (
             <li key={index}>{platform.name}</li>
           ))}
         </ul>
@@ -53,8 +50,10 @@ class Game extends React.Component {
         <br />
         Comments:{" "}
         <ul>
-          {comments.map((comment, index) => (
-            <li key={index}>{comment.content} ({comment.author}, {comment.date})</li>
+          {game.comments.map((comment, index) => (
+            <li key={index}>
+              {comment.content} ({comment.author}, {comment.date})
+            </li>
           ))}
         </ul>
       </div>
