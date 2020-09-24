@@ -6,6 +6,8 @@ class Game extends React.Component {
     super(props);
     this.state = {
       game: [],
+      platforms: [],
+      comments: [],
     };
   }
 
@@ -15,7 +17,9 @@ class Game extends React.Component {
         console.clear();
         console.log("Res", res);
         const game = res.data;
-        this.setState({ game });
+        const platforms = res.data.platforms;
+        const comments = res.data.comments;
+        this.setState({ game, platforms, comments });
       })
       .catch((res) => {
         console.log(res);
@@ -23,20 +27,36 @@ class Game extends React.Component {
   }
 
   render() {
+    const game = this.state.game;
+    const platforms = this.state.platforms;
+    const comments = this.state.comments;
+
     return (
       <div>
-        <h2>Game</h2>
-        <img src="" alt=""></img>
-        <h5>Name</h5>
-        Publisher:
+        <h2>{game.name}</h2>
+        <img src={game.image_url} alt=""></img>
         <br />
-        Published:
+        Publisher: {game.publisher}
         <br />
-        Genre:
+        Published: {game.year_published}
         <br />
-        Platforms:
+        Genre: {game.genre}
         <br />
-        Description:
+        Platforms:{" "}
+        <ul>
+          {platforms.map((platform, index) => (
+            <li key={index}>{platform.name}</li>
+          ))}
+        </ul>
+        <br />
+        Description: {game.description}
+        <br />
+        Comments:{" "}
+        <ul>
+          {comments.map((comment, index) => (
+            <li key={index}>{comment.content} ({comment.author}, {comment.date})</li>
+          ))}
+        </ul>
       </div>
     );
   }
