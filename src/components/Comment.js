@@ -20,8 +20,22 @@ class Comment extends React.Component {
   }
 
   handleSubmit(event) {
-    Axios.post();
     event.preventDefault();
+
+    const comment = {
+      content: this.state.content,
+      author: this.state.author,
+    };
+
+    Axios.post(`https://localhost:8000/game/${this.props.gameId}/comment`, { comment })
+      .then((res) => {
+        console.clear();
+        console.log("Response", res);
+        console.log("Data", res.data);
+      })
+      .catch((res) => {
+        console.log("Catch", res);
+      });
   }
 
   render() {
@@ -45,7 +59,7 @@ class Comment extends React.Component {
             onChange={this.handleChange}
           />{" "}
         </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Comment" />
       </form>
     );
   }

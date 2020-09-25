@@ -17,12 +17,12 @@ class Game extends React.Component {
     Axios.get("https://localhost:8000/game/" + this.props.match.params.id)
       .then((res) => {
         console.clear();
-        console.log("Res", res);
+        console.log("Response", res);
         const game = res.data;
         this.setState({ game });
       })
       .catch((res) => {
-        console.log(res);
+        console.log("Catch", res);
       });
   }
 
@@ -57,7 +57,7 @@ class Game extends React.Component {
             </li>
           ))}
         </ul>
-        <Comment />
+        <Comment gameId={game.id} />
       </div>
     );
   }
