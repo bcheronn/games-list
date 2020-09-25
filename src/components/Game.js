@@ -1,5 +1,6 @@
 import React from "react";
 import Axios from "axios";
+import Comment from "./Comment";
 
 class Game extends React.Component {
   constructor(props) {
@@ -56,6 +57,7 @@ class Game extends React.Component {
             </li>
           ))}
         </ul>
+        <Comment />
       </div>
     );
   }
